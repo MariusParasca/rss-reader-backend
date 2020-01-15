@@ -1,0 +1,28 @@
+version: '3.5'
+services:
+  rss_aggregator_database:
+    container_name: rss_aggregator_database
+    build:
+      context: ./database
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
+    networks:
+      - inner_default
+    restart: always
+  rss_aggregator_server:
+    build:
+      context: ./server
+    depends_on:
+      - rss_aggregator_database
+    environment:
+      - DATABASE_NAME=rss_aggregator
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=test
+      - DATABASE_HOST=rss_aggregator_database
+      - DATABASE_DIALECT=mysql
+    ports:
+      - 2001:2001
+    networks:
+      - inner_default
+networks:
+  inner_default:

@@ -1,0 +1,2 @@
+docker run -d -e --name=auto_fetch_number "DATABASE_USERNAME=root DATABASE_PASSWORD=root DATABASE_HOST=localhost DATABASE_DIALECT=mysql DOCKER_NUMBER_ID=0 TOTAL_NUMBER_OF_DOCKERS=1" --network=inner_default --link rss_aggregator_database:rss_aggregator_database auto_fetch_service
+// TO DO

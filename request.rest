@@ -1,0 +1,29 @@
+POST http://172.19.0.3:2001/feed/add
+Content-Type: application/json
+
+{
+"url": "https://www.agerpres.ro/planeta.rss"
+}
+
+###
+
+POST http://172.19.0.3:2001/feed/change
+Content-Type: application/json
+
+{
+  "id": "dc0af0ad-5e8f-41b3-aa66-61830b6a99c7",
+  "status": "active"
+}
+
+
+###
+
+GET http://172.19.0.3:2001/feeds
+
+###
+
+GET http://172.19.0.3:2001/fetch/dc0af0ad-5e8f-41b3-aa66-61830b6a99c7
+
+###
+
+GET http://172.19.0.3:2001/items

@@ -1,0 +1,35 @@
+
+POST http://localhost:2001/feed/add
+Content-Type: application/json
+
+{
+"url": "http://rss.cnn.com/rss/edition_motorsport.rss"
+}
+
+###
+
+POST http://localhost:2001/feed/change
+Content-Type: application/json
+
+{
+  "id": "83902672-622b-40eb-9ab5-d9e32669300c",
+  "status": "active"
+}
+
+
+###
+
+GET http://localhost:2001/feeds
+
+###
+
+GET http://localhost:2001/fetch/83902672-622b-40eb-9ab5-d9e32669300c
+
+###
+
+GET http://localhost:2001/items?feedId=83902672-622b-40eb-9ab5-d9e32669300c
+
+
+###
+
+GET http://localhost:2001/items
