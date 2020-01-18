@@ -27,7 +27,7 @@ GET http://localhost:2001/fetch/83902672-622b-40eb-9ab5-d9e32669300c
 
 ###
 
-GET http://localhost:2001/items?feedId=83902672-622b-40eb-9ab5-d9e32669300c
+GET http://localhost:2001/items?feedId=0b6dd6c9-7adb-49bc-9fe7-5142ebff219e;0b6dd6c9-7adb-49bc-9fe7-5142ebff219e
 
 
 ###

@@ -1,6 +1,7 @@
 import { validationResult } from 'express-validator';
 import HttpStatus from 'http-status-codes';
 
+import { RESULTS_PER_PAGE } from '@utils/constants';
 import * as itemsService from '@services/itemsService';
 
 export const getItems = async (req, res) => {
@@ -9,13 +10,15 @@ export const getItems = async (req, res) => {
     return res.status(HttpStatus.UNPROCESSABLE_ENTITY).json({ errors: errors.array() });
   }
 
-  if (req.query.feedId) {
-    const data = await itemsService.getAllItemsByFeedId({ rssFeedUrlId: req.query.feedId });
-    return res.status(HttpStatus.OK).json(data);
-  }
+  const offset = Number(req.query.page) || 1;
 
-  const data = await itemsService.getAllItemsForAllFeeds();
-  return res.status(HttpStatus.OK).json(data);
+  if (req.query.feedId) {
+    const data = await itemsService.getItemsWithPagination({ rssFeedUrlId: req.query.feedId, offset });
+    return res.status(HttpStatus.OK).json({
+      items: data.items,
+      numOfResults: data.count,
+    });
+  }
 };
 
 export default getItems;
