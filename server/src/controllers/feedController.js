@@ -2,6 +2,7 @@ import { validationResult } from 'express-validator';
 import HttpStatus from 'http-status-codes';
 
 import * as feedService from '@services/feedService';
+import { RssFeedUrl } from '@models';
 
 export const add = async (req, res) => {
   const errors = validationResult(req);
@@ -33,4 +34,14 @@ export const change = async (req, res) => {
 export const feeds = async (req, res) => {
   const feedValues = await feedService.feeds();
   return res.status(HttpStatus.OK).send(feedValues);
+};
+
+export const deleteFeed = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(HttpStatus.UNPROCESSABLE_ENTITY).json({ errors: errors.array() });
+  }
+
+  await feedService.deleteFeed({ id: req.params.id });
+  return res.status(HttpStatus.OK).send();
 };

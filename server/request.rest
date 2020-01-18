@@ -3,7 +3,7 @@ POST http://localhost:2001/feed/add
 Content-Type: application/json
 
 {
-"url": "http://rss.cnn.com/rss/edition_motorsport.rss"
+"url": "http://rss.cnn.com/rss/edition_africa.rss"
 }
 
 ###
@@ -20,6 +20,10 @@ Content-Type: application/json
 ###
 
 GET http://localhost:2001/feeds
+
+
+###
+DELETE http://localhost:2001/feeds/673e9003-8dc4-4f47-a953-82e0a60da2e8
 
 ###
 

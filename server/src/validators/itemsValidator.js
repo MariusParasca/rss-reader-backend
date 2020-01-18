@@ -2,7 +2,7 @@ import { query } from 'express-validator';
 
 import uuIDv4 from '@utils/isUuIDv4';
 
-export const itemsValidator = [
+export const getItemsValidator = [
   query('feedId')
     .custom(value => {
       if (!value) return true;

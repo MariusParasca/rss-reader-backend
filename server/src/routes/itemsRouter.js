@@ -5,6 +5,6 @@ import * as itemsValidator from '@validators/itemsValidator';
 
 const router = express.Router();
 
-router.get('/', itemsValidator.itemsValidator, itemsController.getItems);
+router.get('/', itemsValidator.getItemsValidator, itemsController.getItems);
 
 export default router;

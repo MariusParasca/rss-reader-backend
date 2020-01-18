@@ -21,4 +21,11 @@ export const getItems = async (req, res) => {
   }
 };
 
+export const deleteItem = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(HttpStatus.UNPROCESSABLE_ENTITY).json({ errors: errors.array() });
+  }
+};
+
 export default getItems;

@@ -1,4 +1,4 @@
-import { check, checkSchema } from 'express-validator';
+import { check, checkSchema, param } from 'express-validator';
 
 export const addValidator = [check('url').isURL()];
 
@@ -13,3 +13,5 @@ const statusSchema = {
 };
 
 export const changeValidator = [check('id').isUUID(), checkSchema(statusSchema)];
+
+export const deleteFeedValidator = [param('id').isUUID()];

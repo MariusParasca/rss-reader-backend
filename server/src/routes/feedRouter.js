@@ -11,4 +11,6 @@ router.post('/feed/change', feedValidator.changeValidator, feedController.change
 
 router.get('/feeds', feedController.feeds);
 
+router.delete('/feeds/:id', feedValidator.deleteFeedValidator, feedController.deleteFeed);
+
 export default router;

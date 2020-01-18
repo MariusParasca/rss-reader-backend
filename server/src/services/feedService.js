@@ -34,3 +34,7 @@ export const change = async ({ id, status }) => {
 export const feeds = async () => {
   return RssFeedUrl.findAll({ attributes: ['id', 'url', 'title'], raw: true, where: { status: 'active' } });
 };
+
+export const deleteFeed = ({ id }) => {
+  return RssFeedUrl.destroy({ where: { id } });
+};
