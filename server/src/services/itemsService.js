@@ -27,6 +27,7 @@ export const getAllItemsByFeedId = ({ rssFeedUrlIds, offset }) => {
         attributes: ['title'],
       },
     ],
+    order: [['isoDate', 'DESC']],
     offset: offset,
     limit: RESULTS_PER_PAGE,
   });

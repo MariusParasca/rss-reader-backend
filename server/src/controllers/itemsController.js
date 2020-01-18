@@ -10,10 +10,11 @@ export const getItems = async (req, res) => {
     return res.status(HttpStatus.UNPROCESSABLE_ENTITY).json({ errors: errors.array() });
   }
 
-  const offset = Number(req.query.page) || 1;
+  const offset = Number(req.query.offset) || 0;
 
   if (req.query.feedId) {
     const data = await itemsService.getItemsWithPagination({ rssFeedUrlId: req.query.feedId, offset });
+
     return res.status(HttpStatus.OK).json({
       items: data.items,
       numOfResults: data.count,
