@@ -1,10 +1,10 @@
-import express from 'express';
+const express = require('express');
 
-import * as itemsController from '@controllers/itemsController';
-import * as itemsValidator from '@validators/itemsValidator';
+const itemsController = require('../controllers/itemsController');
+const itemsValidator = require('../validators/itemsValidator');
 
 const router = express.Router();
 
 router.get('/', itemsValidator.getItemsValidator, itemsController.getItems);
 
-export default router;
+module.exports = router;

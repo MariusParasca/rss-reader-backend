@@ -1,7 +1,7 @@
-import Sequelize from 'sequelize';
-import uuid from 'uuid/v4';
+const Sequelize = require('sequelize');
+const uuid = require('uuid/v4');
 
-export default database => {
+module.exports = database => {
   const RssFeedUrl = database.define('rss_feed_url', {
     id: { type: Sequelize.UUID, primaryKey: true, defaultValue: () => uuid() },
     url: { type: Sequelize.STRING, allowNull: false, unique: true },

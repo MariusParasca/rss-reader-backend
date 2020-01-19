@@ -1,10 +1,10 @@
-import { validationResult } from 'express-validator';
-import HttpStatus from 'http-status-codes';
+const { validationResult } = require('express-validator');
+const HttpStatus = require('http-status-codes');
 
-import { RESULTS_PER_PAGE } from '@utils/constants';
-import * as itemsService from '@services/itemsService';
+const { RESULTS_PER_PAGE } = require('../utils/constants');
+const itemsService = require('../services/itemsService');
 
-export const getItems = async (req, res) => {
+exports.getItems = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(HttpStatus.UNPROCESSABLE_ENTITY).json({ errors: errors.array() });
@@ -22,11 +22,9 @@ export const getItems = async (req, res) => {
   }
 };
 
-export const deleteItem = async (req, res) => {
+exports.deleteItem = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(HttpStatus.UNPROCESSABLE_ENTITY).json({ errors: errors.array() });
   }
 };
-
-export default getItems;

@@ -1,5 +1,5 @@
-import Sequelize from 'sequelize';
-import * as models from '@models';
+const Sequelize = require('sequelize');
+const models = require('./index');
 
 require('dotenv').config();
 
@@ -37,4 +37,4 @@ const sequelize = new Sequelize(
   }
 })();
 
-export default sequelize;
+module.exports = sequelize;

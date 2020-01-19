@@ -1,7 +1,7 @@
-import express from 'express';
+const express = require('express');
 
-import * as feedController from '@controllers/feedController';
-import * as feedValidator from '@validators/feedValidator';
+const feedController = require('../controllers/feedController');
+const feedValidator = require('../validators/feedValidator');
 
 const router = express.Router();
 
@@ -13,4 +13,4 @@ router.get('/feeds', feedController.feeds);
 
 router.delete('/feeds/:id', feedValidator.deleteFeedValidator, feedController.deleteFeed);
 
-export default router;
+module.exports = router;

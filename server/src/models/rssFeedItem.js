@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
+const Sequelize = require('sequelize');
 
-export default database => {
+module.exports = database => {
   const RssFeedItem = database.define(
     'rss_feed_item',
     {

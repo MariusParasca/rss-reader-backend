@@ -1,9 +1,9 @@
-import HttpStatus from 'http-status-codes';
-import RSSParser from 'rss-parser';
+const HttpStatus = require('http-status-codes');
+const RSSParser = require('rss-parser');
 
 const parser = new RSSParser();
 
-export const getRssItemsByURL = async url => {
+exports.getRssItemsByURL = async url => {
   try {
     const feed = await parser.parseURL(url);
 
@@ -12,5 +12,3 @@ export const getRssItemsByURL = async url => {
     return { status: HttpStatus.NOT_ACCEPTABLE, message: 'Rss URL (link) is invalid' };
   }
 };
-
-export default getRssItemsByURL;

@@ -1,8 +1,8 @@
-import { query } from 'express-validator';
+const { query } = require('express-validator');
 
-import uuIDv4 from '@utils/isUuIDv4';
+const uuIDv4 = require('../utils/isUuIDv4');
 
-export const getItemsValidator = [
+exports.getItemsValidator = [
   query('feedId')
     .custom(value => {
       if (!value) return true;

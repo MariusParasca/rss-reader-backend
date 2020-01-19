@@ -1,11 +1,11 @@
-import { Op } from 'sequelize';
+const { Op } = require('sequelize');
 
-import { RESULTS_PER_PAGE } from '@utils/constants.js';
-import { RssFeedUrl, RssFeedItem } from '@models';
+const { RESULTS_PER_PAGE } = require('../utils/constants');
+const { RssFeedUrl, RssFeedItem } = require('../models');
 
 const RSS_FEED_ITEMS_ATTRIBUTES = ['date', 'title', 'content', 'link', 'guid', 'isoDate'];
 
-export const getAllItemsForAllFeeds = async () => {
+exports.getAllItemsForAllFeeds = async () => {
   return RssFeedItem.findAll({
     attributes: RSS_FEED_ITEMS_ATTRIBUTES,
     include: [
@@ -17,7 +17,7 @@ export const getAllItemsForAllFeeds = async () => {
   });
 };
 
-export const getAllItemsByFeedId = ({ rssFeedUrlIds, offset }) => {
+const getAllItemsByFeedId = ({ rssFeedUrlIds, offset }) => {
   return RssFeedItem.findAll({
     attributes: RSS_FEED_ITEMS_ATTRIBUTES,
     where: { rssFeedUrlId: { [Op.in]: rssFeedUrlIds } },
@@ -33,11 +33,11 @@ export const getAllItemsByFeedId = ({ rssFeedUrlIds, offset }) => {
   });
 };
 
-export const getCountOfAllItems = ({ rssFeedUrlIds }) => {
+const getCountOfAllItems = ({ rssFeedUrlIds }) => {
   return RssFeedItem.count({ where: { rssFeedUrlId: { [Op.in]: rssFeedUrlIds } } });
 };
 
-export const getItemsWithPagination = async ({ rssFeedUrlId, offset }) => {
+exports.getItemsWithPagination = async ({ rssFeedUrlId, offset }) => {
   const rssFeedUrlIds = rssFeedUrlId.split(';');
   const items = await getAllItemsByFeedId({ rssFeedUrlIds, offset });
   const count = await getCountOfAllItems({ rssFeedUrlIds });

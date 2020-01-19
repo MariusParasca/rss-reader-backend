@@ -1,8 +1,8 @@
-import express from 'express';
+const express = require('express');
 
-import feedRouter from './feedRouter';
-import fetchRouter from './fetchRouter';
-import itemsRouter from './itemsRouter';
+const feedRouter = require('./feedRouter');
+const fetchRouter = require('./fetchRouter');
+const itemsRouter = require('./itemsRouter');
 
 const router = express.Router();
 
@@ -10,4 +10,4 @@ router.use('/', feedRouter);
 router.use('/fetch', fetchRouter);
 router.use('/items', itemsRouter);
 
-export default router;
+module.exports = router;

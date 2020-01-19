@@ -1,6 +1,6 @@
-import database from './database';
-import defineRssFeedItem from './rssFeedItem';
-import defineRssFeedUrl from './rssFeedUrl';
+const database = require('./database');
+const defineRssFeedItem = require('./rssFeedItem');
+const defineRssFeedUrl = require('./rssFeedUrl');
 
-export const RssFeedItem = defineRssFeedItem(database);
-export const RssFeedUrl = defineRssFeedUrl(database);
+exports.RssFeedItem = defineRssFeedItem(database);
+exports.RssFeedUrl = defineRssFeedUrl(database);

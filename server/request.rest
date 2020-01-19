@@ -23,15 +23,15 @@ GET http://localhost:2001/feeds
 
 
 ###
-DELETE http://localhost:2001/feeds/673e9003-8dc4-4f47-a953-82e0a60da2e8
+DELETE http://localhost:2001/feeds/00bbe24d-1e7d-45fc-a294-96645f6d23a9
 
 ###
 
-GET http://localhost:2001/fetch/83902672-622b-40eb-9ab5-d9e32669300c
+GET http://localhost:2001/fetch/a58599ff-c7ad-432e-87ef-82840d711cd0
 
 ###
 
-GET http://localhost:2001/items?feedId=aee4b3a0-5c79-40b5-aa26-908d42a49294&offset=10
+GET http://localhost:2001/items?feedId=a58599ff-c7ad-432e-87ef-82840d711cd0&offset=10
 
 
 ###

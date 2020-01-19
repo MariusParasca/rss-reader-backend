@@ -1,10 +1,10 @@
-import express from 'express';
+const express = require('express');
 
-import * as fetchController from '@controllers/fetchController';
-import fetchValidator from '@validators/fetchValidator';
+const fetchController = require('../controllers/fetchController');
+const fetchValidator = require('../validators/fetchValidator');
 
 const router = express.Router();
 
-router.get('/:id', fetchValidator, fetchController.fetch);
+router.get('/:id', fetchValidator.fetchValidator, fetchController.fetch);
 
-export default router;
+module.exports = router;

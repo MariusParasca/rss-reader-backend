@@ -1,8 +1,8 @@
-import hash from 'hash.js';
-import HttpStatus from 'http-status-codes';
+const hash = require('hash.js');
+const HttpStatus = require('http-status-codes');
 
-import { RssFeedUrl, RssFeedItem } from '@models';
-import * as rssParserService from './rssParserService';
+const { RssFeedUrl, RssFeedItem } = require('../models');
+const rssParserService = require('./rssParserService');
 
 const createEntry = (item, rssFeedId) => {
   return {
@@ -44,7 +44,7 @@ const insertFetchedItemsInDb = async (itemsData, rssFeedUrlId) => {
   }
 };
 
-export const getItemsByFeedId = async ({ id }) => {
+exports.getItemsByFeedId = async ({ id }) => {
   const rssFeed = await RssFeedUrl.findOne({ where: { id }, raw: true });
   if (!rssFeed) {
     return { status: HttpStatus.NO_CONTENT, message: 'Not found' };
@@ -53,7 +53,7 @@ export const getItemsByFeedId = async ({ id }) => {
   return insertFetchedItemsInDb(items.data, id);
 };
 
-export const fetchItemsByUrl = async ({ url, id }) => {
+exports.fetchItemsByUrl = async ({ url, id }) => {
   const items = await rssParserService.getRssItemsByURL(url);
   return insertFetchedItemsInDb(items.data, id);
 };

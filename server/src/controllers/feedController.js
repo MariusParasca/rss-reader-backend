@@ -1,10 +1,12 @@
-import { validationResult } from 'express-validator';
-import HttpStatus from 'http-status-codes';
+const { validationResult } = require('express-validator');
+const HttpStatus = require('http-status-codes');
 
-import * as feedService from '@services/feedService';
-import { RssFeedUrl } from '@models';
+const feedService = require('../services/feedService');
+const { RssFeedUrl } = require('../models');
 
-export const add = async (req, res) => {
+console.log(feedService);
+
+exports.add = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(HttpStatus.UNPROCESSABLE_ENTITY).json({ errors: errors.array() });
@@ -20,7 +22,7 @@ export const add = async (req, res) => {
   return res.status(serviceResponse.status).send({ message: serviceResponse.message });
 };
 
-export const change = async (req, res) => {
+exports.change = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(HttpStatus.UNPROCESSABLE_ENTITY).json({ errors: errors.array() });
@@ -31,12 +33,12 @@ export const change = async (req, res) => {
   return res.status(serviceResponse.status).send({ message: serviceResponse.message });
 };
 
-export const feeds = async (req, res) => {
+exports.feeds = async (req, res) => {
   const feedValues = await feedService.feeds();
   return res.status(HttpStatus.OK).send(feedValues);
 };
 
-export const deleteFeed = async (req, res) => {
+exports.deleteFeed = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(HttpStatus.UNPROCESSABLE_ENTITY).json({ errors: errors.array() });

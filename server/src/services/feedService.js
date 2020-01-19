@@ -1,9 +1,9 @@
-import HttpStatus from 'http-status-codes';
+const HttpStatus = require('http-status-codes');
 
-import { RssFeedUrl } from '@models';
-import * as rssParserService from '@services/rssParserService';
+const { RssFeedUrl } = require('../models');
+const rssParserService = require('../services/rssParserService');
 
-export const addRssUrl = async ({ url }) => {
+exports.addRssUrl = async ({ url }) => {
   const rssParserResponse = await rssParserService.getRssItemsByURL(url);
 
   if (rssParserResponse.status === HttpStatus.NOT_ACCEPTABLE) {
@@ -23,7 +23,7 @@ export const addRssUrl = async ({ url }) => {
   return { status: HttpStatus.NOT_ACCEPTABLE, message: 'Url already exists' };
 };
 
-export const change = async ({ id, status }) => {
+exports.change = async ({ id, status }) => {
   const rowsUpdated = await RssFeedUrl.update({ status }, { where: { id } });
   if (rowsUpdated[0] === 1) {
     return { status: HttpStatus.OK, message: 'Ok' };
@@ -31,7 +31,7 @@ export const change = async ({ id, status }) => {
   return { status: HttpStatus.NO_CONTENT, message: 'Not updated' };
 };
 
-export const feeds = async () => {
+exports.feeds = async () => {
   return RssFeedUrl.findAll({
     attributes: ['id', 'url', 'title'],
     raw: true,
@@ -40,6 +40,6 @@ export const feeds = async () => {
   });
 };
 
-export const deleteFeed = ({ id }) => {
+exports.deleteFeed = ({ id }) => {
   return RssFeedUrl.destroy({ where: { id } });
 };

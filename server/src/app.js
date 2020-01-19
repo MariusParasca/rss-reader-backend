@@ -1,8 +1,8 @@
-import express from 'express';
-import cors from 'cors';
+const express = require('express');
+const cors = require('cors');
 
-import routes from '@routes';
-import '@models/database';
+const routes = require('./routes');
+require('./models/database');
 
 require('dotenv').config();
 

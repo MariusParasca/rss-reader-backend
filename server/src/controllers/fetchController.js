@@ -1,9 +1,9 @@
-import { validationResult } from 'express-validator';
-import HttpStatus from 'http-status-codes';
+const { validationResult } = require('express-validator');
+const HttpStatus = require('http-status-codes');
 
-import * as fetchService from '@services/fetchService';
+const fetchService = require('../services/fetchService');
 
-export const fetch = async (req, res) => {
+exports.fetch = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(HttpStatus.UNPROCESSABLE_ENTITY).json({ errors: errors.array() });
@@ -13,5 +13,3 @@ export const fetch = async (req, res) => {
 
   return res.status(serviceResponse.status).send({ message: serviceResponse.message });
 };
-
-export default fetch;

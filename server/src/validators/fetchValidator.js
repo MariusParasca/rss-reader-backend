@@ -1,5 +1,3 @@
-import { check } from 'express-validator';
+const { check } = require('express-validator');
 
-const fetchValidator = [check('id').isUUID()];
-
-export default fetchValidator;
+exports.fetchValidator = [check('id').isUUID()];
