@@ -1,2 +1,3 @@
 server/node_modules
 auto_fetch_service/node_modules
+server/.env
