@@ -41,5 +41,5 @@ exports.feeds = async () => {
 };
 
 exports.deleteFeed = ({ id }) => {
-  return RssFeedUrl.update({ {status: 'inactive'} where: { id } });
+  return RssFeedUrl.update({ status: 'inactive' }, { where: { id } });
 };
